@@ -7,8 +7,6 @@ import (
 
 func ifStatements() {
 	//SEQUENCE
-	fmt.Println("this is the first statement to run")
-	fmt.Println("this is the second statement to run")
 	x := 45 // this is the third statement to run
 	y := 5  // this is the fourth statement to run
 	fmt.Printf(" x=%v \n y=%v\n", x, y)

@@ -6,4 +6,8 @@ func main() {
 	ifStatements()
 	fmt.Println("---")
 	switchStatements()
+	println("---")
+	selectStatements()
+	println("---")
+	loop()
 }
