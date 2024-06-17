@@ -10,4 +10,6 @@ func main() {
 	selectStatements()
 	println("---")
 	loop()
+	println("---")
+	forRangeLoops()
 }
