@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/jpalmerr/puppy"
-)
+) // go get
 
 func main() {
 	s1 := puppy.Bark()
