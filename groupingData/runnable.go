@@ -16,4 +16,8 @@ func main() {
 	s.AdaptingSlices()
 	fmt.Println("---Slice make---")
 	s.SliceMake()
+	fmt.Println("---Slice multidimensional---")
+	s.MultiDimensionalSlice()
+	fmt.Println("---Slice internals---")
+	s.SliceInternals()
 }

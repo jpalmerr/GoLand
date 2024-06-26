@@ -21,3 +21,15 @@ func SliceMake() {
 	fmt.Println(len(xi))
 	fmt.Println(cap(xi)) // 20 as append adds capacity of 10/same as slice its appending -> due to underlying array getting copied
 }
+
+//multidimensional slice
+
+func MultiDimensionalSlice() {
+	jb := []string{"James", "Bond", "Martini"}
+	jm := []string{"Jenny", "Moneypenny", "Guinness"}
+
+	xxs := [][]string{jb, jm}
+
+	fmt.Println(xxs)
+
+}
