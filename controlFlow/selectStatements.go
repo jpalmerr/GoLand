@@ -9,7 +9,7 @@ import (
 func selectStatements() {
 	/**
 	The make keyword in Go is used to create and initialize slices, maps, and channels.
-	It allocates and initializes an object of type slice, map, or channel,
+	It allocates and initializes an object of type slice, maps, or channel,
 	and returns a value of that type (not a pointer to it).
 	*/
 

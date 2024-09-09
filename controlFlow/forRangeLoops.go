@@ -11,17 +11,17 @@ func forRangeLoops() {
 	}
 
 	// for range loop
-	// data structures - map. maps are not ordered
+	// data structures - maps. maps are not ordered
 	m := map[string]int{
 		"James":      42,
 		"Moneypenny": 32,
 	}
 	for k, v := range m {
-		fmt.Println("ranging over a map", k, v)
+		fmt.Println("ranging over a maps", k, v)
 	}
 
 	/**
-	If you're looping over an array, slice, string, or map, or reading from a channel, a range clause can manage the loop
+	If you're looping over an array, slice, string, or maps, or reading from a channel, a range clause can manage the loop
 	*/
 
 	fmt.Println("--- array --- ")
@@ -48,8 +48,8 @@ func forRangeLoops() {
 		fmt.Printf("Index: %d, Character: %c\n", index, char)
 	}
 
-	fmt.Println("---map---")
-	// map
+	fmt.Println("---maps---")
+	// maps
 	oldMap := map[string]int{"a": 1, "b": 2, "c": 3}
 	newMap := make(map[string]int) // think of make as setting a variable with a type but not a value, like a description
 	for key, value := range oldMap {

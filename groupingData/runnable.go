@@ -1,6 +1,7 @@
 package main
 
 import (
+	m "example/hello/groupingData/maps"
 	s "example/hello/groupingData/slice"
 	"fmt"
 )
@@ -20,4 +21,11 @@ func main() {
 	s.MultiDimensionalSlice()
 	fmt.Println("---Slice internals---")
 	s.SliceInternals()
+	fmt.Println("---Slice internals: copy---")
+	s.UnderlyingArrayCopy()
+	fmt.Println("---Slice internals eg---")
+	s.SliceInternalsProgram()
+
+	fmt.Println("---Maps Intro---")
+	m.MapsIntro()
 }
