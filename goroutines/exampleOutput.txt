@@ -1,0 +1,16 @@
+first app, output
+
+begin
+Event List:
+Name: event1, Start Time: 2024-10-18T13:21:31+01:00
+Name: event2, Start Time: 2024-10-18T13:21:41+01:00
+Name: event3, Start Time: 2024-10-18T13:21:51+01:00
+Name: event4, Start Time: 2024-10-18T13:22:01+01:00
+Name: event5, Start Time: 2024-10-18T13:22:11+01:00
+Name: event6, Start Time: 2024-10-18T13:22:21+01:00
+Event: event1, Start Time: 2024-10-18T13:21:31+01:00, Trigger Time: 2024-10-18T13:17:31+01:00, Fired At: 2024-10-18T13:17:31+01:00
+Event: event2, Start Time: 2024-10-18T13:21:41+01:00, Trigger Time: 2024-10-18T13:17:41+01:00, Fired At: 2024-10-18T13:17:41+01:00
+Event: event3, Start Time: 2024-10-18T13:21:51+01:00, Trigger Time: 2024-10-18T13:17:51+01:00, Fired At: 2024-10-18T13:17:51+01:00
+Event: event4, Start Time: 2024-10-18T13:22:01+01:00, Trigger Time: 2024-10-18T13:18:01+01:00, Fired At: 2024-10-18T13:18:01+01:00
+Event: event5, Start Time: 2024-10-18T13:22:11+01:00, Trigger Time: 2024-10-18T13:18:11+01:00, Fired At: 2024-10-18T13:18:11+01:00
+Event: event6, Start Time: 2024-10-18T13:22:21+01:00, Trigger Time: 2024-10-18T13:18:21+01:00, Fired At: 2024-10-18T13:18:21+01:00
