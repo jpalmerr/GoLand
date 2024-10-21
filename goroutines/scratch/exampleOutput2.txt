@@ -1,0 +1,46 @@
+Now when simulating an endpoint response - that is always successful
+
+begin
+
+Event List:
+Name: event4, Start Time: 2024-10-21T10:40:54+01:00
+Name: event6, Start Time: 2024-10-21T10:41:14+01:00
+Name: event2, Start Time: 2024-10-21T10:40:34+01:00
+Name: event1, Start Time: 2024-10-21T10:40:24+01:00
+Name: event5, Start Time: 2024-10-21T10:41:04+01:00
+Name: event3, Start Time: 2024-10-21T10:40:44+01:00
+
+Sorted by trigger time:
+Event: event1, Start Time: 2024-10-21T10:40:24+01:00, Trigger Time: 2024-10-21T10:36:24+01:00
+Event: event2, Start Time: 2024-10-21T10:40:34+01:00, Trigger Time: 2024-10-21T10:36:34+01:00
+Event: event3, Start Time: 2024-10-21T10:40:44+01:00, Trigger Time: 2024-10-21T10:36:44+01:00
+Event: event4, Start Time: 2024-10-21T10:40:54+01:00, Trigger Time: 2024-10-21T10:36:54+01:00
+Event: event5, Start Time: 2024-10-21T10:41:04+01:00, Trigger Time: 2024-10-21T10:37:04+01:00
+Event: event6, Start Time: 2024-10-21T10:41:14+01:00, Trigger Time: 2024-10-21T10:37:14+01:00
+
+
+Processing events...
+Event: event1, Start Time: 2024-10-21T10:40:24+01:00, Trigger Time: 2024-10-21T10:36:24+01:00, Fired At: 2024-10-21T10:36:24+01:00
+Endpoint responded with 200 OK after event1
+%!(EXTRA float64=0.901)Event: event2, Start Time: 2024-10-21T10:40:34+01:00, Trigger Time: 2024-10-21T10:36:34+01:00, Fired At: 2024-10-21T10:36:34+01:00
+Endpoint responded with 200 OK after event2
+%!(EXTRA float64=0.307)Event: event3, Start Time: 2024-10-21T10:40:44+01:00, Trigger Time: 2024-10-21T10:36:44+01:00, Fired At: 2024-10-21T10:36:44+01:00
+Endpoint responded with 200 OK after event3
+%!(EXTRA float64=0.213)Event: event4, Start Time: 2024-10-21T10:40:54+01:00, Trigger Time: 2024-10-21T10:36:54+01:00, Fired At: 2024-10-21T10:36:54+01:00
+Endpoint responded with 200 OK after event4
+%!(EXTRA float64=1.437)Event: event5, Start Time: 2024-10-21T10:41:04+01:00, Trigger Time: 2024-10-21T10:37:04+01:00, Fired At: 2024-10-21T10:37:04+01:00
+Endpoint responded with 200 OK after event5
+%!(EXTRA float64=1.501)Event: event6, Start Time: 2024-10-21T10:41:14+01:00, Trigger Time: 2024-10-21T10:37:14+01:00, Fired At: 2024-10-21T10:37:14+01:00
+Endpoint responded with 200 OK after event6
+%!(EXTRA float64=1.813)
+
+
+SO
+
+we should simulate a scenario where
+a) calls can fail
+b) calls can take longer than the time until next event
+
+and we should write our code so that
+- we fire off an event, but waiting on a response does not impact the fire time of the next event ie work asynchronously
+- we do not lose the status of whether the endpoint call was a success or failure

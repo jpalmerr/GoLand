@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sort"
 	"time"
 )
@@ -33,17 +34,46 @@ func generateMockData(adBreakStart time.Time) []DummyBreakData {
 		})
 	}
 
+	// Shuffle the data slice randomly
+	rand.Shuffle(len(data), func(i, j int) {
+		data[i], data[j] = data[j], data[i]
+	})
+
 	return data
+
 }
 
 // sortByTriggerTime orders the events by trigger time (soonest first)
-func sortByTriggerTime(data []DummyBreakData) {
+func sortByTriggerTime(data []DummyBreakData) []DummyBreakData {
 	sort.Slice(data, func(i, j int) bool {
-		return data[i].triggerTime.Before(data[j].triggerTime) //  .Before reports whether the time instant t is before u.
+		return data[i].triggerTime.Before(data[j].triggerTime)
 	})
+	return data
 }
 
 // todo^ look at the newer [slices.SortFunc]
+
+// simulateEndpointCall simulates an HTTP endpoint call by printing to the console
+// and waiting for a random response time between 0 and 2 seconds.
+func simulateEndpointCall(event DummyBreakData) {
+	// Record the time the endpoint is "called" (when it's fired)
+	firedAt := time.Now()
+
+	// Print the start of the endpoint call for the event
+	fmt.Printf("Event: %s, Start Time: %s, Trigger Time: %s, Fired At: %s\n",
+		event.name,
+		event.startTime.Format(time.RFC3339),
+		event.triggerTime.Format(time.RFC3339),
+		firedAt.Format(time.RFC3339),
+	)
+
+	// Simulate random response time between 0 and 2 seconds
+	randomDelay := time.Duration(rand.Intn(2000)) * time.Millisecond
+	time.Sleep(randomDelay)
+
+	// Print that the response is a 200 success
+	fmt.Printf("Endpoint responded with 200 OK after %v\n", event.name, randomDelay.Seconds())
+}
 
 // scheduleEvent waits for the event's trigger time to fire
 func scheduleEvent(data DummyBreakData, now time.Time, done chan<- bool) { // done channel
@@ -52,14 +82,9 @@ func scheduleEvent(data DummyBreakData, now time.Time, done chan<- bool) { // do
 	if timeUntilTrigger > 0 {
 		time.Sleep(timeUntilTrigger) // wait until it's time to trigger the event
 	}
-	// todo: introduce scenario where trigger hits a dummy endpoint and waits for a response
-	// todo: include failed responses in this scenario ^
-	fmt.Printf("Event: %s, Start Time: %s, Trigger Time: %s, Fired At: %s\n",
-		data.name,
-		data.startTime.Format(time.RFC3339),
-		data.triggerTime.Format(time.RFC3339),
-		time.Now().Format(time.RFC3339),
-	)
+
+	// simulate calling the endpoint for the break
+	simulateEndpointCall(data)
 
 	done <- true // signal that this goroutine is done
 }
@@ -96,8 +121,19 @@ func main() {
 	}
 
 	// sort mock data
-	sortByTriggerTime(mockData)
+	sortedData := sortByTriggerTime(mockData)
+
+	// Print the sorted data
+	fmt.Println("Sorted by trigger time:")
+	for _, event := range sortedData {
+		fmt.Printf("Event: %s, Start Time: %s, Trigger Time: %s\n",
+			event.name,
+			event.startTime.Format(time.RFC3339),
+			event.triggerTime.Format(time.RFC3339),
+		)
+	}
 
 	// Process events concurrently
-	processEvents(mockData)
+	fmt.Println("Processing events...")
+	processEvents(sortedData)
 }

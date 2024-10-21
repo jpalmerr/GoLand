@@ -1,0 +1,63 @@
+Simulation starting at: 14:13:15
+
+Simulating poll for upcoming events...
+Found event: Name: event1, Start: 14:13:58 (in 43s), Trigger: 14:13:28 (in 13s)
+Found event: Name: event2, Start: 14:14:02 (in 47s), Trigger: 14:13:32 (in 17s)
+Found event: Name: event3, Start: 14:14:07 (in 52s), Trigger: 14:13:37 (in 22s)
+Found event: Name: event4, Start: 14:13:58 (in 43s), Trigger: 14:13:28 (in 13s)
+Found event: Name: event5, Start: 14:14:01 (in 46s), Trigger: 14:13:31 (in 16s)
+Found event: Name: event6, Start: 14:14:07 (in 52s), Trigger: 14:13:37 (in 22s)
+
+Priority queue (sorted by trigger time):
+Priority event: Name: event1, Start: 14:13:58 (in 43s), Trigger: 14:13:28 (in 13s)
+Priority event: Name: event4, Start: 14:13:58 (in 43s), Trigger: 14:13:28 (in 13s)
+Priority event: Name: event5, Start: 14:14:01 (in 46s), Trigger: 14:13:31 (in 16s)
+Priority event: Name: event2, Start: 14:14:02 (in 47s), Trigger: 14:13:32 (in 17s)
+Priority event: Name: event3, Start: 14:14:07 (in 52s), Trigger: 14:13:37 (in 22s)
+Priority event: Name: event6, Start: 14:14:07 (in 52s), Trigger: 14:13:37 (in 22s)
+
+Scheduling events...
+Scheduled: Name: event1, Start: 14:13:58 (in 43s), Trigger: 14:13:28 (in 13s)
+Scheduled: Name: event4, Start: 14:13:58 (in 43s), Trigger: 14:13:28 (in 13s)
+Scheduled: Name: event5, Start: 14:14:01 (in 46s), Trigger: 14:13:31 (in 16s)
+Scheduled: Name: event2, Start: 14:14:02 (in 47s), Trigger: 14:13:32 (in 17s)
+Scheduled: Name: event3, Start: 14:14:07 (in 52s), Trigger: 14:13:37 (in 22s)
+Scheduled: Name: event6, Start: 14:14:07 (in 52s), Trigger: 14:13:37 (in 22s)
+
+Awaiting responses...
+Waiting 22s to trigger event6
+Waiting 22s to trigger event3
+Waiting 16s to trigger event5
+Waiting 13s to trigger event1
+Waiting 13s to trigger event4
+Waiting 17s to trigger event2
+⚡ Triggering event1 endpoint call at 14:13:28
+⚡ Triggering event4 endpoint call at 14:13:28
+✅ SUCCESS - Name: event1, Start: 14:13:58 (in 28s), Trigger: 14:13:28 (in -2s)
+  Status: 200
+  Duration: 2.08s
+  Fired At: 14:13:28
+⚡ Triggering event5 endpoint call at 14:13:31
+⚡ Triggering event2 endpoint call at 14:13:32
+❌ ERROR - Name: event4, Start: 14:13:58 (in 25s), Trigger: 14:13:28 (in -5s)
+  Status: 500, Error: HTTP 500 error
+  Duration: 5.39s
+  Fired At: 14:13:28
+✅ SUCCESS - Name: event5, Start: 14:14:01 (in 26s), Trigger: 14:13:31 (in -4s)
+  Status: 200
+  Duration: 3.54s
+  Fired At: 14:13:31
+✅ SUCCESS - Name: event2, Start: 14:14:02 (in 26s), Trigger: 14:13:32 (in -4s)
+  Status: 200
+  Duration: 3.95s
+  Fired At: 14:13:32
+⚡ Triggering event3 endpoint call at 14:13:37
+⚡ Triggering event6 endpoint call at 14:13:37
+✅ SUCCESS - Name: event3, Start: 14:14:07 (in 27s), Trigger: 14:13:37 (in -3s)
+  Status: 200
+  Duration: 3.25s
+  Fired At: 14:13:37
+❌ ERROR - Name: event6, Start: 14:14:07 (in 26s), Trigger: 14:13:37 (in -4s)
+  Status: 500, Error: HTTP 500 error
+  Duration: 4.36s
+  Fired At: 14:13:37
