@@ -1,0 +1,69 @@
+this scenario was ran against case where two events have the same trigger time
+
+Simulating poll for upcoming events...
+Found event: Name: event1, Start: 10:21:53 (in 49s), Trigger: 10:21:23 (in 19s)
+Found event: Name: event2, Start: 10:21:46 (in 42s), Trigger: 10:21:16 (in 12s)
+Found event: Name: event3, Start: 10:21:52 (in 48s), Trigger: 10:21:22 (in 18s)
+Found event: Name: event4, Start: 10:21:57 (in 53s), Trigger: 10:21:27 (in 23s)
+Found event: Name: event5, Start: 10:21:45 (in 41s), Trigger: 10:21:15 (in 11s)
+Found event: Name: event6, Start: 10:21:45 (in 41s), Trigger: 10:21:15 (in 11s)
+
+Priority queue (sorted by trigger time):
+Priority event: Name: event5, Start: 10:21:45 (in 41s), Trigger: 10:21:15 (in 11s)
+Priority event: Name: event6, Start: 10:21:45 (in 41s), Trigger: 10:21:15 (in 11s)
+Priority event: Name: event2, Start: 10:21:46 (in 42s), Trigger: 10:21:16 (in 12s)
+Priority event: Name: event3, Start: 10:21:52 (in 48s), Trigger: 10:21:22 (in 18s)
+Priority event: Name: event1, Start: 10:21:53 (in 49s), Trigger: 10:21:23 (in 19s)
+Priority event: Name: event4, Start: 10:21:57 (in 53s), Trigger: 10:21:27 (in 23s)
+
+Scheduling events...
+Scheduled: Name: event5, Start: 10:21:45 (in 41s), Trigger: 10:21:15 (in 11s)
+Scheduled: Name: event6, Start: 10:21:45 (in 41s), Trigger: 10:21:15 (in 11s)
+Scheduled: Name: event2, Start: 10:21:46 (in 42s), Trigger: 10:21:16 (in 12s)
+Scheduled: Name: event3, Start: 10:21:52 (in 48s), Trigger: 10:21:22 (in 18s)
+Scheduled: Name: event1, Start: 10:21:53 (in 49s), Trigger: 10:21:23 (in 19s)
+Scheduled: Name: event4, Start: 10:21:57 (in 53s), Trigger: 10:21:27 (in 23s)
+
+Awaiting responses...
+Waiting 23s to trigger event4
+Waiting 11s to trigger event5
+Waiting 11s to trigger event6
+Waiting 12s to trigger event2
+Waiting 19s to trigger event1
+Waiting 18s to trigger event3
+⚡ Triggering event6 endpoint call at 10:21:15
+⚡ Triggering event5 endpoint call at 10:21:15
+⚡ Triggering event2 endpoint call at 10:21:16
+❌ ERROR - Name: event6, Start: 10:21:45 (in 25s), Trigger: 10:21:15 (in -5s)
+  Status: 429, Error: HTTP 429 error
+  Duration: 4.92s
+  Fired At: 10:21:15
+✅ SUCCESS - Name: event5, Start: 10:21:45 (in 25s), Trigger: 10:21:15 (in -5s)
+  Status: 200
+  Duration: 5.30s
+  Fired At: 10:21:15
+❌ ERROR - Name: event2, Start: 10:21:46 (in 25s), Trigger: 10:21:16 (in -5s)
+  Status: 400, Error: HTTP 400 error
+  Duration: 5.04s
+  Fired At: 10:21:16
+⚡ Triggering event3 endpoint call at 10:21:22
+⚡ Triggering event1 endpoint call at 10:21:23
+✅ SUCCESS - Name: event1, Start: 10:21:53 (in 28s), Trigger: 10:21:23 (in -2s)
+  Status: 200
+  Duration: 2.02s
+  Fired At: 10:21:23
+⚡ Triggering event4 endpoint call at 10:21:27
+❌ ERROR - Name: event3, Start: 10:21:52 (in 24s), Trigger: 10:21:22 (in -6s)
+  Status: 500, Error: HTTP 500 error
+  Duration: 5.61s
+  Fired At: 10:21:22
+❌ ERROR - Name: event4, Start: 10:21:57 (in 25s), Trigger: 10:21:27 (in -5s)
+  Status: 500, Error: HTTP 500 error
+  Duration: 5.08s
+  Fired At: 10:21:27
+
+
+Again we can see
+    - Waiting 11s to trigger event5
+      Waiting 11s to trigger event6
+and that they did in-fact both fire at:  Fired At: 10:21:15

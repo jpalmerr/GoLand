@@ -44,9 +44,22 @@ func generateMockData(simulationStart time.Time) []DummyBreakData {
 			triggerTime: triggerTime,
 			name:        fmt.Sprintf("event%d", i+1),
 		}
-
-		fmt.Printf("Found event: %s\n", formatEventTimes(event))
 		data = append(data, event)
+	}
+
+	// generated events, now select two random events to match times
+	idx1 := rand.Intn(len(data))
+	idx2 := idx1
+	for idx2 == idx1 {
+		idx2 = rand.Intn(len(data))
+	}
+
+	// Make the second event match the first event's times
+	data[idx2].startTime = data[idx1].startTime
+	data[idx2].triggerTime = data[idx1].triggerTime
+
+	for _, event := range data {
+		fmt.Printf("Found event: %s\n", formatEventTimes(event))
 	}
 
 	return data
