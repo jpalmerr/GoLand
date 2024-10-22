@@ -54,7 +54,7 @@ func generateMockData(simulationStart time.Time) []DummyBreakData {
 		idx2 = rand.Intn(len(data))
 	}
 
-	// Make the second event match the first event's times
+	// make the second event match the first event's times
 	data[idx2].startTime = data[idx1].startTime
 	data[idx2].triggerTime = data[idx1].triggerTime
 
@@ -152,6 +152,16 @@ func processEvents(data []DummyBreakData) {
 
 	fmt.Println("\nScheduling events...")
 	// launch all goroutines
+	/**
+	this is the interesting part of the POC - where goroutines are used
+	notice "go" prefixing the invoking of scheduleEvent
+	https://golangdocs.com/goroutines-in-golang
+
+	note from
+	Real-Life Use Cases of Goroutines or Concurrency
+	 - Posting multiple API calls in different threads when they are not dependent on each other
+	 - To implement “fire and forget” situation
+	*/
 	for _, event := range data {
 		fmt.Printf("Scheduled: %s\n", formatEventTimes(event))
 		go scheduleEvent(event, now, responses)
@@ -180,6 +190,7 @@ func processEvents(data []DummyBreakData) {
 	}
 }
 
+// run me to run the app
 func main() {
 	simulationStart := time.Now()
 	fmt.Printf("Simulation starting at: %s\n", simulationStart.Format("15:04:05"))
