@@ -67,3 +67,6 @@ Again we can see
     - Waiting 11s to trigger event5
       Waiting 11s to trigger event6
 and that they did in-fact both fire at:  Fired At: 10:21:15
+
+    - Event 3 firing, but hanging on a response
+      Has no impact on event 1 and event 4 firing on time
